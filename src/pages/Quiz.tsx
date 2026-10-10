@@ -47,17 +47,17 @@ function Quiz() {
       });
 
       const incorrectCount = totalQuestions - correctCount;
-      const percentage = (correctCount / totalQuestions) * 100;
+      const percentage = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
 
       // Navigate to the result page with calculated data
       const resultState: QuizResultState = {
-          totalQuestions,
-          correctAnswers: correctCount,
-          incorrectAnswers: incorrectCount,
-          score: correctCount,
-          percentage,
-          userAnswers: selectedAnswers,
-          completed: true,
+        totalQuestions,
+        correctAnswers: correctCount,
+        incorrectAnswers: incorrectCount,
+        score: correctCount,
+        percentage,
+        userAnswers: selectedAnswers,
+        completed: true,
       };
       navigate('/result', { state: resultState });
     }
